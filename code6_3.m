@@ -10,14 +10,15 @@ for k=1:1:5000
 t(k)=k*T;
 x1r(k)=2+1*sin(k*T);
 time=[0 T];
-[tt,xx]=ode45(@(t,x) thirdorder(t,x,uk),time,xk);
+tk=t(k);
+[tt,xx]=ode45(@(t,x) thirdorder(tk,xk,uk),time,xk);
 xk=xx(length(xx),:)'; 
 x1(k)=xk(1);
 x2(k)=xk(2);
 x3(k)=xk(3);
 s(k)=x1r(k)-x1(k);
 
-[tt,zz]=ode45(@(t,z)smo2(t,z,sk),time,zk);
+[tt,zz]=ode45(@(t,z)smo2(tk,zk,sk),time,zk);
 zk=zz(length(zz),:)'; 
 z1(k)=zk(1);
 z2(k)=zk(2);
