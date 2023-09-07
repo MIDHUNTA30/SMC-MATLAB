@@ -9,8 +9,9 @@ T=0.01;
 for k=1:1:1000
 t(k)=k*T;
 time=[0 T];
+tk=t(k);
 % solve using ode45
-[tt,xx]=ode45(@(t,x) nonautonomous(t,x,uk),time,xk);
+[tt,xx]=ode45(@(t,x) nonautonomous(tk,xk,uk),time,xk);
 % updating state vector, 
 % which acts as the initial state of next iteration.
 % last row in xx vector is taken as current state vector.
