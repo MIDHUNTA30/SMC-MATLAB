@@ -11,13 +11,14 @@ t(k)=k*T;
 x1r(k)=2+1*sin(k*T);
 x2r(k)=1*cos(k*T);
 time=[0 T];
-[tt,xx]=ode45(@(t,x) pendulum(t,x,uk),time,xk);
+tk=t(k);
+[tt,xx]=ode45(@(t,x) pendulum(tk,xk,uk),time,xk);
 xk=xx(length(xx),:)'; 
 x1(k)=xk(1);
 x2(k)=xk(2);
 s(k)=x1r(k)-x1(k);
 
-[tt,zz]=ode45(@(t,z) smo(t,z,sk),time,zk); % Estimating s dot
+[tt,zz]=ode45(@(t,z) smo(tk,zk,sk),time,zk); % Estimating s dot
 zk=zz(length(zz),:)'; 
 z1(k)=zk(1);
 z2(k)=zk(2);
